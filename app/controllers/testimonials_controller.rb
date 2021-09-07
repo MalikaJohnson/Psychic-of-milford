@@ -8,10 +8,10 @@ class TestimonialsController < ApplicationController
     render json: @testimonials
   end
 
-  # GET /testimonials/1
-  def show
-    render json: @testimonial
-  end
+  # # GET /testimonials/1
+  # def show
+  #   render json: @testimonial
+  # end
 
   # POST /testimonials
   def create
@@ -24,28 +24,28 @@ class TestimonialsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /testimonials/1
-  def update
-    if @testimonial.update(testimonial_params)
-      render json: @testimonial
-    else
-      render json: @testimonial.errors, status: :unprocessable_entity
-    end
-  end
+  # # PATCH/PUT /testimonials/1
+  # def update
+  #   if @testimonial.update(testimonial_params)
+  #     render json: @testimonial
+  #   else
+  #     render json: @testimonial.errors, status: :unprocessable_entity
+  #   end
+  # end
 
-  # DELETE /testimonials/1
-  def destroy
-    @testimonial.destroy
-  end
+  # # DELETE /testimonials/1
+  # def destroy
+  #   @testimonial.destroy
+  # end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_testimonial
-      @testimonial = Testimonial.find(params[:id])
-    end
+  # private
+  #   # Use callbacks to share common setup or constraints between actions.
+  #   def set_testimonial
+  #     @testimonial = Testimonial.find(params[:id])
+  #   end
 
-    # Only allow a list of trusted parameters through.
-    def testimonial_params
-      params.require(:testimonial).permit(:name, :content)
-    end
+  #   # Only allow a list of trusted parameters through.
+  #   def testimonial_params
+  #     params.require(:testimonial).permit(:name, :content)
+  #   end
 end
