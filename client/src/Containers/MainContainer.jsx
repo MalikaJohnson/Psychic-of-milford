@@ -39,7 +39,7 @@ export default function MainContainer({currentAdmin}) {
       <Route exact path= '/contact'>
         <Contact />
       </Route>
-      <Route exact path='/session' >
+      <Route exact path='/sessions' >
         <Sessions />
       </Route>
       <Route exact path='/testimonials'>

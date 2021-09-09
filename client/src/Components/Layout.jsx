@@ -10,7 +10,7 @@ export default function Layout(props) {
         {currentUser ? (
           <>
             <p className="welcome">Welcome{currentUser.username}</p>
-            <div className="layou-logout">
+            <div className="layout-logout">
               <button className="layout-logout-btn" onClick={handleLogout}>Logout</button>
               </div>
               <div>
@@ -24,7 +24,7 @@ export default function Layout(props) {
         ) : (
               <>
                 <div className="layout-login">
-                <Link className="layout-login" to='/login'>Login</Link>
+                <Link className="layout-login-link" to='/login'>Login</Link>
               </div>
                 <div>
                 <Link className="layout-services" to='/services'>Services</Link>
