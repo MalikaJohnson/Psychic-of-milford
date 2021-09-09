@@ -14,7 +14,7 @@ export const signUpAdmin= async (signUpData) => {
 	return resp.data.admin;
 };
 
-export const verifyUser = async () => {
+export const verifyAdmin = async () => {
 	const token = localStorage.getItem('authToken');
 	if (token) {
 		api.defaults.headers.common.authorization = `Bearer ${token}`;
