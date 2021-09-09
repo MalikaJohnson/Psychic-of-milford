@@ -1,6 +1,6 @@
 // service packages
 import { useState, useEffect } from "react"
-import { Switch, Route, useHistory } from "react-router-dom"
+import { Route, useHistory } from "react-router-dom"
 import Homescreen from "../Screens/Homescreen/Homescreen"
 import Contact from "../Screens/Contact/Contact"
 import Sessions from "../Screens/Sessions/Sessions"
@@ -8,20 +8,53 @@ import Servicesoffered from "../Screens/Servicesoffered/Servicesoffered"
 import Testimonials from "../Screens/Testimonials/Testimonials"
 
 // api imports from back end services 
-import { getAllTestimonials, deleteTestimonial, postTestimonial, putTesimonial } from "../Services/testimonials"
+import { getAllTestimonials, deleteTestimonial, postTestimonial} from "../Services/testimonials"
 
-export default function MainContainer() {
+export default function MainContainer({currentAdmin}) {
 
   const [testimonial, setTestimonial] = useState([])
   const history = useHistory();
 
+  const fetchTestimonials = async () => {
+    const testy = await getAllTestimonials();
+    setTestimonial(testy);
+  };
 
+  const handleCreate = async (formData) => {
+    const oneTestimonial = await postTestimonial(formData);
+    setTestimonial((prevState) => [...prevState, oneTestimonial]);
+    history.push("/testimonials");
+  };
 
+  const handleDelete = async (id) => {
+    await deleteTestimonial(id);
+    setTestimonial((prevState) => prevState.filter((testimonial) => testimonial.id !== id));
+    fetchTestimonials()
+    history.push("/testimonials");
+  };
 
 
   return (
     <div>
-
+      <Route exact path= '/contact'>
+        <Contact />
+      </Route>
+      <Route exact path='/session' >
+        <Sessions />
+      </Route>
+      <Route exact path='/testimonials'>
+        <Testimonials
+          currentAdmin={currentAdmin}
+          testimonial={testimonial}
+          handleCreate={handleCreate}
+          handleDelete={handleDelete}/>
+      </Route>
+      <Route exact path='/services'>
+        <Servicesoffered />
+      </Route>
+      <Route exact path='/home'>
+        <Homescreen />
+      </Route>
     </div>
   )
 }
