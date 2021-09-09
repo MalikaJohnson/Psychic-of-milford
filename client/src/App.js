@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import Layout from "./Components/Layout"
+import Login from "./Screens/Login/Login"
+import MainContainer from './Containers/MainContainer';
+import {Switch, Route, useHistory} from "react-router-dom"
+import { useState, useEffect } from "react"
+
+// auth sevices used to verify admin 
+import {
+  loginAdmin,
+  signUpAdmin,
+  removeToken,
+} from "./Services/auth"
 
 function App() {
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+  
     </div>
   );
 }
