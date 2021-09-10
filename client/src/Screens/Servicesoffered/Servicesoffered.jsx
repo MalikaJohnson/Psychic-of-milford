@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 export default function Servicesoffered() {
   return (
     <div>
+      <header> 
       <h2>Services</h2>
+      </header>
       <div className="service-card-container">
         <div className="service-palm-card">
           <img className="service-palm-img" src="https://imgur.com/HUfWU3t" />
