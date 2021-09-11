@@ -12,17 +12,17 @@ import { getAllTestimonials, deleteTestimonial, postTestimonial} from "../Servic
 
 export default function MainContainer({currentAdmin}) {
 
-  const [testimonial, setTestimonial] = useState([])
+  const [testimonials, setTestimonials] = useState([])
   const history = useHistory();
 
   const fetchTestimonials = async () => {
     const testy = await getAllTestimonials();
-    setTestimonial(testy);
+    setTestimonials(testy);
   };
 
   const handleCreate = async (formData) => {
     const oneTestimonial = await postTestimonial(formData);
-    setTestimonial((prevState) => [...prevState, oneTestimonial]);
+    setTestimonials((prevState) => [...prevState, oneTestimonial]);
     history.push("/testimonials");
   };
 
@@ -45,7 +45,7 @@ export default function MainContainer({currentAdmin}) {
       <Route exact path='/testimonials'>
         <Testimonials
           currentAdmin={currentAdmin}
-          testimonial={testimonial}
+          testimonials={testimonials}
           handleCreate={handleCreate}
           handleDelete={handleDelete}/>
       </Route>
